@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Event Management</title>
+    <script defer src="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css" rel="stylesheet" />
+</head>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+nav ul li {
+    margin-right: 20px;
+}
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 5px 10px;
+}
+nav ul li a.active {
+    background-color: #e4e4e4;
+    border-radius: 5px;
+}
+nav ul li a:hover {
+    background-color: #5e5e5e;
+    border-radius: 5px;
+}
+
+.about-section {
+    padding: 20px;
+}
+
+.team-section {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.team-member {
+    text-align: center;
+    margin: 0 20px;
+}
+
+.team-member img {
+    width: 200px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+</style>
+<body>
+    <header>
+        <h1>EventHub</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">Create </a></li>
+                <li><a href="ongoing.html"> On Going</a></li>
+                <li><a href="#">Past</a></li>
+                <li><a href="#">Bill</a></li>
+                <li><a href="login1.html">Logout</a></li>
+
+            </ul>
+        </nav>
+    </header>
+
+    <section class="about-section">
+        <form onsubmit="return submitCreateEventForm()" class="splitForm">
+            <div id="createEventForm1">
+                <div class="form-field">
+                    <div class="form-field__control">
+                        <input id="event_name" type="text" class="form-field__input" placeholder=" " required>
+                        <label for="event_name" class="form-field__label">Event Name</label>
+                        <div class="form-field__bar"></div>
+                    </div>
+                </div> 
+                <div class="form-field">
+                    <div class="form-field__control">
+                        <input id="event_start_date" type="date" class="form-field__input" required>
+                        <label for="event_start_date" class="form-field__label">Start Date</label>
+                        <div class="form-field__bar"></div>
+                    </div>
+                </div> 
+                <div class="form-field">
+                    <div class="form-field__control">
+                        <input id="event_end_date" type="date" class="form-field__input" required>
+                        <label for="event_end_date" class="form-field__label">End Date</label>
+                        <div class="form-field__bar"></div>
+                    </div>
+                </div>
+                <div class="form-field">
+                    <div class="form-field__control">
+                        <input id="event_location" type="text" class="form-field__input" placeholder=" " required>
+                        <label for="event_location" class="form-field__label">Location</label>
+                        <div class="form-field__bar"></div>
+                    </div>
+                </div>
+                <div class="form-field">
+                    <div class="form-field__control">
+                        <select id="event_type" class="form-field__input" required>
+                            <option value="0">Conference</option>
+                            <option value="1">Workshop</option>
+                            <option value="2">Concert</option>
+                        </select>
+                        <label for="event_type" class="form-field__label">Event Type</label>
+                        <div class="form-field__bar"></div>
+                    </div>
+                </div>
+                <div class="form-field">
+                    <div class="form-field__control">
+                        <input id="banner-image" type="file" class="form-field__input" accept="image/x-png,image/jpeg" required>
+                        <label for="banner-image" class="form-field__label">Banner Image</label>
+                        <div class="form-field__bar"></div>
+                    </div>
+                </div>
+                <button class="btn blue">Submit</button>
+            </div>
+            <style>
+                .splitForm {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-field {
+    margin-bottom: 20px;
+}
+
+.form-field__control {
+    position: relative;
+}
+
+.form-field__input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.form-field__label {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #999;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.form-field__input:focus + .form-field__label,
+.form-field__input:not(:placeholder-shown) + .form-field__label {
+    top: 5px;
+    font-size: 12px;
+    color: #007bff;
+}
+
+.form-field__bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #007bff;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.form-field__input:focus + .form-field__label + .form-field__bar,
+.form-field__input:not(:placeholder-shown) + .form-field__label + .form-field__bar {
+    transform: scaleX(1);
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+#map {
+    height: 200px; /* Adjust the height as needed */
+}
+
+            </style>
+    </section>
+    <div>
+    <title>Route Planner</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+    <h1>Route Planner</h1>
+
+ 
+
+           
+
+    <h1>Drop your location coordinates here</h1>
+    
+    <div>
+        <label for="destination">Destination Coordinates (comma-separated):</label>
+        <input type="text" id="destination" placeholder="Enter destination coordinates">
+        <button onclick="planRoute()">Plan Route</button>
+    </div>
+    <div id="map" style="height: 400px;"></div>
+    <script>
+        const map = L.map('map').setView([0, 0], 13);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+        function initMap() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    position => {
+                        const { latitude, longitude } = position.coords;
+                        map.setView([latitude, longitude], 13);
+                        L.marker([latitude, longitude]).addTo(map);
+                    },
+                    error => {
+                        console.error('Error getting location:', error.message);
+                    }
+                );
+            } else {
+                console.error('Geolocation is not supported by this browser.');
+            }
+        }
+
+        initMap();
+
+        function planRoute() {
+            const destinationInput = document.getElementById('destination');
+            const destination = destinationInput.value;
+
+            if (!destination) {
+                alert('Please enter destination coordinates.');
+                return;
+            }
+
+            const [destLat, destLon] = destination.split(',').map(coord => parseFloat(coord.trim()));
+
+            if (isNaN(destLat) || isNaN(destLon)) {
+                alert('Invalid destination coordinates.');
+                return;
+            }
+
+            const control = L.Routing.control({
+                waypoints: [
+                    L.latLng(map.getCenter().lat, map.getCenter().lng), // Current location
+                    L.latLng(destLat, destLon)
+                ],
+                routeWhileDragging: true
+            }).addTo(map);
+        }
+    </script>
+<div>
+    <p id="base64Image"></p>
+    <p id="latitude"></p>
+    <p id="longitude"></p>
+</div>
+</div>
+
+    <footer>
+        <p>&copy; Wokay Coderz! . All rights reserved.</p>
+    </footer>
+</body>
+</html>

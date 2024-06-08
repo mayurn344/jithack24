@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventHub - Ongoing Events</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    /* Resetting default margin and padding */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header styles */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px; /* Apply border radius to all links */
+}
+
+nav ul li a:hover {
+    background-color: #636363; /* Change background color on hover */
+}
+
+/* Main content styles */
+.main {
+    padding: 20px;
+}
+
+.hero {
+    background-color: #007bff;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.hero h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.events {
+    margin-top: 50px;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.events h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.event-list {
+    display: flex;
+    justify-content: space-around;
+}
+
+.event-item {
+    background-color: #fff;
+    padding: 20px;
+    margin: 0 10px;
+    border-radius: 5px;
+    flex: 1;
+    max-width: 300px;
+}
+
+.event-item h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.event-item p {
+    margin: 5px 0;
+}
+
+/* Footer styles */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+</style>
+<body>
+    <header>
+        <h1>EventHub</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">Create</a></li>
+                <li><a href="#">On Going</a></li>
+                <li><a href="#">Past</a></li>
+                <li><a href="#">Bill</a></li>
+                <li><a href="login1.html">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h2>Welcome to EventHub</h2>
+            <p>CAMPUS EVENT MANAGEMENT SYSTEM</p>
+            <a href="#" class="btn">Learn More</a>
+        </section>
+
+        <section class="events">
+            <h2>Ongoing Events</h2>
+            <div class="event-list">
+                <div class="event-item">
+                    <h3>Event 1</h3>
+                    <p><strong>Date:</strong> June 15, 2024</p>
+                    <p><strong>Location:</strong> Auditorium</p>
+                </div>
+                <div class="event-item">
+                    <h3>Event 2</h3>
+                    <p><strong>Date:</strong> June 20, 2024</p>
+                    <p><strong>Location:</strong> Sports Complex</p>
+                </div>
+                <div class="event-item">
+                    <h3>Event 3</h3>
+                    <p><strong>Date:</strong> June 25, 2024</p>
+                    <p><strong>Location:</strong> Seminar Hall</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Wokay Coderz. All rights reserved.</p>
+    </footer>
+</body>
+</html>
